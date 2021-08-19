@@ -15,16 +15,17 @@ function updateCountToStorage(count) {
 }
 
 function Counter() {
-  const localCount = window.localStorage.getItem('count')
-  const initCount = localCount ? JSON.parse(localCount) : 0
-  const [count, setCount] = React.useState(initCount)
+  const [count, setCount] = React.useState(() => {
+    const localCount = window.localStorage.getItem('count')
+    return JSON.parse(localCount) || 0
+  })
   const handleClick = () => {
     setCount(count + 1)
   }
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     document.title = `You clicked ${count} times`;
     updateCountToStorage(count)
-  })
+  }, [count])
   return (
     <div>
       <p>You clicked {count} times</p>
