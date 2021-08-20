@@ -1,6 +1,7 @@
 import './App.css';
 import React from 'react'
 import useInput from './useInput';
+import Calculator from './components/calculator';
 
 const TitleStyle = {
   color: 'blue',
@@ -78,6 +79,7 @@ function App() {
       Hello World!
       <Counter/>
       <Input/>
+      <Calculator/>
     </div>
   );
 }
